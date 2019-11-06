@@ -51,7 +51,7 @@ server.use(session(sessionOptions));
 
 //This is what is shown from the backend when you go to the localhost:5000/
 server.get("/", (req, res) => {
-  res.send("Welcome to the Wedding Bells Back End Repo");
+  res.send("Welcome to Socialive's Back End!");
 });
 
 module.exports = server;
