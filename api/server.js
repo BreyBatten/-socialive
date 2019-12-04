@@ -4,8 +4,12 @@ const cors = require("cors");
 const helmet = require("helmet");
 const session = require("express-session");
 const knexSessionStore = require("connect-session-knex")(session);
+
 const server = express();
+
 const usersRouter = require("../routes/userRouter");
+const eventsRouter = require("../routes/eventRouter");
+const authRouter = require("../routes/authRouter");
 
 //Import routes from the router file here
 // const example1Router = require("../routers/example1Router");
@@ -19,7 +23,7 @@ const { restricted } = require("../middleware");
 
 //Insert Session options here
 const sessionOptions = {
-  name: "#{name of cookie for sessionOptions in server.js",
+  name: "socialive",
   secret: secrets.jwtSecret,
   cookie: {
     maxAge: 1000 * 60 * 60,
@@ -46,6 +50,8 @@ server.use(session(sessionOptions));
 
 //Insert routes for routers here
 server.use("/api/users", usersRouter);
+server.use("/api/events", eventsRouter);
+server.use("/api/auth", authRouter);
 //This one does not use authentication middleware
 // server.use("/api/ex1", example1Router);
 // //This one does use authentication middleware
