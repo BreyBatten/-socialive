@@ -80,7 +80,7 @@ router.post("/login", async (req, res) => {
         .update({ jwt: token });
 
       return res.status(200).json({
-        message: `Welcome ${username}!`,
+        message: `Welcome ${user.username}!`,
         token: token,
         user
       });
